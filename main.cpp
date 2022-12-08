@@ -1,17 +1,18 @@
-#include<opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
+#include <iostream>
+#include <opencv2/highgui.hpp>
 #include <opencv2/objdetect.hpp> 
-#include<iostream>
+#include <opencv2/imgproc.hpp>
+
 
 using namespace cv;
 using namespace std;
 
 int main()
 {
-	VideoCapture cap(1);
+	VideoCapture cap("James.mp4");
 	Mat img;
 	CascadeClassifier plateCascade;
-	plateCascade.load("Resources/haarcascade_russian_plate_number.xml");
+	plateCascade.load("haarcascade_russian_plate_number.xml");
 	if (plateCascade.empty()) {
 		cout << " error" << endl;
 	}
@@ -27,7 +28,7 @@ int main()
 			imwrite(path_to_ImgCrop,imgCrop);
 		}
 		imshow("Image", img);
-		waitKey(1);
+		waitKey(27);
 	}
 	return 0;
 }
